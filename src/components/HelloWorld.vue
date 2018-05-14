@@ -3,6 +3,8 @@
   <vue-markdown> The # hhh time of **NOW** is : </vue-markdown>
   <vue-markdown> 
 
+内容一定要顶头写
+
 ```js
 console.log('hello')
 ```
