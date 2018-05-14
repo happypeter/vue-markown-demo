@@ -1,38 +1,33 @@
 <template>
-<div>
-  <vue-markdown> The # hhh time of **NOW** is : </vue-markdown>
-  <vue-markdown> 
+<div v-if="content">
 
-内容一定要顶头写
+<vue-markdown>
+{{content}}
 
-```js
-console.log('hello')
-```
-
-  </vue-markdown>
-    <vue-markdown>
-### Solar System Exploration, 1950s – 1960s
-
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
-    </vue-markdown>
+# hello
+</vue-markdown>
 </div>
 </template>
 
 
 <script>
+import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
 export default {
   name: 'HelloWorld',
   components: {
     VueMarkdown
+  },
+  data: () => ({
+    content: ''
+  }),
+  created() {
+    const uri =
+      'https://raw.githubusercontent.com/happypeter/haoduoshipin/master/posts/videos/10.md'
+    axios.get(uri).then(res => {
+      this.content = res.data
+      console.log('this.content', this.content)
+    })
   }
 }
 </script>
